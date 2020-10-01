@@ -5,6 +5,7 @@ import Chat from './components/Chat';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { Box } from '@material-ui/core';
+import MenuAppBar from './components/Header'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <Box className={classes.root}>
+      <MenuAppBar />
       <Grid container spacing={2}>
         <Grid item xs={3} alignItems="center">
           <Contacts />
