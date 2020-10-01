@@ -6,14 +6,18 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
+import { Box, Container, Paper } from '@material-ui/core';
 
 
 
 const useStyles = makeStyles((theme) => ({
-	root: {
-		width: '100%',
-		maxWidth: 360,
-		backgroundColor: theme.palette.background.paper,
+	containerList: {
+		height: '90vh',
+		overflow: 'auto'
+	},
+	paper: {
+		backgroundColor: "#fafafa",
+		padding: 10,
 	},
 }));
 
@@ -24,7 +28,7 @@ function Contacts() {
 		{ name: "Diego Rosa", picture: "https://bit.ly/3ifttSL", status: "online" },
 		{ name: "Eder Duarte", picture: "https://bit.ly/30hyLqC", status: "offline" },
 		{ name: "Giovanna Marçaro", picture: "https://bit.ly/2S7o2e2", status: "occupied" },
-		{ name: "Thais Oliveira", picture: null, status: "online" }
+		{ name: "Thais Oliveira", picture: null, status: "online" },
 	]
 
 	const openChat = (contact) => {
@@ -32,17 +36,21 @@ function Contacts() {
 	}
 
 	return (
-		contacts.map(contact => (
-				<List component="nav" className={classes.root} aria-label="mailbox folders">
-					<ListItem button onClick={() => openChat(contact)}>
-						<ListItemAvatar>
-							<Avatar alt={contact.name} src={contact.picture} />
-						</ListItemAvatar>
-						<ListItemText primary={contact.name} secondary={contact.status} />
-					</ListItem>
-					<Divider />
-				</List>
-		))
+		<Paper elevation={3} className={classes.paper}>
+			<List component="nav" className={classes.containerList} aria-label="mailbox folders">
+				{contacts.map(contact => (
+					<>
+						<ListItem button onClick={() => openChat(contact)}>
+							<ListItemAvatar>
+								<Avatar alt={contact.name} src={contact.picture} />
+							</ListItemAvatar>
+							<ListItemText primary={contact.name} secondary={contact.status} />
+						</ListItem>
+						<Divider />
+					</>
+				))}
+			</List>
+		</Paper>
 	);
 }
 

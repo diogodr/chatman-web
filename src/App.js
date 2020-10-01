@@ -2,14 +2,15 @@ import React from 'react';
 
 import Contacts from './components/Contacts';
 import Chat from './components/Chat';
-import { makeStyles } from '@material-ui/core/styles';  
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import { Box } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
     padding: 10,
-    width: "100%"
+    height: "97vh",
+    backgroundColor: "#BEBEBE"
   },
   paper: {
     padding: theme.spacing(2),
@@ -22,14 +23,16 @@ function App() {
   const classes = useStyles();
 
   return (
-    <Grid fixed py="-10%" container className={classes.root} spacing={2}>
-       <Grid item xs={3} alignItems="center">
-         <Contacts />
+    <Box className={classes.root}>
+      <Grid container spacing={2}>
+        <Grid item xs={3} alignItems="center">
+          <Contacts />
+        </Grid>
+        <Grid item xs={9}>
+          <Chat />
+        </Grid>
       </Grid>
-      <Grid item xs={9}>
-         <Chat />
-       </Grid>
-     </Grid>
+    </Box>
   );
 }
 
