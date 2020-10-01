@@ -3,15 +3,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { Box } from '@material-ui/core';
+import CustomizedInputBase from '../buttons/InputBase'
+import { spacing } from '@material-ui/system';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		flexGrow: 1,
+		maxHeight: '100%',
 	},
 	paper: {
-		height: 600,
 		backgroundColor: "#fafafa",
-		padding: 10
+		padding: 10,	
 	},
 	messageText: {
 		paddingLeft: 10,
@@ -20,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
 		margin: 10,
 		maxWidth: "50%"
 	},
+
 }));
 
 function Chat() {
@@ -39,7 +42,7 @@ function Chat() {
 	return (
 		<Grid container className={classes.root} spacing={2}>
 			<Grid item xs={9} alignItems="center">
-				<Paper className={classes.paper}>
+				<Paper elevation={3} className={classes.paper}>
 					{messages.map(message => (
 						<Box display="flex" justifyContent={message.author === 1 ? "flex-start" : "flex-end"}>
 							<Paper className={classes.messageText}>
@@ -47,6 +50,9 @@ function Chat() {
 							</Paper>
 						</Box>
 					))}
+					<Box width="97%" mx="auto">	
+						<CustomizedInputBase className={classes.InputBase}/>
+					</Box>
 				</Paper>
 			</Grid>
 		</Grid>
