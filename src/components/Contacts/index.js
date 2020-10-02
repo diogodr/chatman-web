@@ -56,7 +56,7 @@ function Contacts() {
 						<>
 							<ListItem button onClick={() => openChat(contact)}>
 								<ListItemAvatar>
-									<Avatar alt={contact.name} src={contact.picture} />
+									<Avatar alt={contact.name} src={contact.picture}/>
 								</ListItemAvatar>
 								<ListItemText primary={contact.name} secondary={contact.status} />
 							</ListItem>

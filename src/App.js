@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { Box } from '@material-ui/core';
 import MenuAppBar from './components/Header'
+import PrincipalList from './components/PrincipalList';
+import TemporaryDrawer from './components/Drawer'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,7 +36,9 @@ function App() {
           <Chat />
         </Grid>
       </Grid>
+      <TemporaryDrawer />
     </Box>
+    
   );
 }
 

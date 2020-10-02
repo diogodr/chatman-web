@@ -19,12 +19,14 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    color: '#fff',
   },
   configuration: {
       color: "#fff",
   },
   toolBar: {
-    backgroundColor: '#333'
+    backgroundColor: '#333',
+    borderRadius: 10
   }
 }));
 
@@ -33,7 +35,7 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar style={{ borderRadius: 10}}  color="transparent" position="sticky">
             <Toolbar className={classes.toolBar}>
                 <IconButton className={classes.menuButton} aria-label="menu">
                     <MenuIcon />
