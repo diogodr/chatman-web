@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
@@ -27,8 +27,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CustomizedInputBase() {
+export default function CustomizedInputBase({ saveMessage }) {
   const classes = useStyles();
+  const [message, setMessage] = useState("");
+
+  const onChange = (event) => {
+    setMessage(event.target.value);
+  };
+
+  const sendMessage = () => {
+    console.log("MENSAGEM: ", message);
+    saveMessage(message);
+    setMessage("");
+  }
 
   return (
     <Paper component="form" className={classes.root}>
@@ -38,9 +49,11 @@ export default function CustomizedInputBase() {
       <InputBase
         className={classes.input}
         placeholder="Digite uma mensagem"
+        value={message}
+        onChange={onChange}
         inputProps={{ 'aria-label': 'Digite uma mensagem' }}
       />
-      <IconButton type="submit" className={classes.iconButton} aria-label="sendicon">
+      <IconButton onClick={sendMessage} className={classes.iconButton} aria-label="sendicon">
         <SendIcon />
       </IconButton>
       <Divider className={classes.divider} orientation="vertical" />

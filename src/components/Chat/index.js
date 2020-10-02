@@ -40,38 +40,38 @@ function Chat() {
 		{ text: "Você ja terminou o app?", date: new Date(), author: 1 },
 		{ text: "Ainda não, estou trabalhando nisso.", date: new Date(), author: 2 },
 		{ text: "Que bom, se precisar de algo me chama.", date: new Date(), author: 1 },
-		{ text: "Que bom, se precisar de algo me chama.", date: new Date(), author: 1 },
-		{ text: "Que bom, se precisar de algo me chama.", date: new Date(), author: 1 },
-		{ text: "Que bom, se precisar de algo me chama.", date: new Date(), author: 1 },
-		{ text: "Que bom, se precisar de algo me chama.", date: new Date(), author: 1 },
-		{ text: "Que bom, se precisar de algo me chama.", date: new Date(), author: 1 },
 		{ text: "Beleza! :D", date: new Date(), author: 2 }
 	];
 
 	const [messages, setMessages] = useState(initialMessages)
 
+	const saveMessage = (message) => {
+		setMessages([...messages, { text: message, date: new Date(), author: 2 }]);
+
+		//TODO: AQUI JÁ DEVE MANDAR PARA A API
+	}
+
 	return (
-			<Grid container spacing={2}>			
-				<Grid item xs={9} alignItems="center">
-					<Paper elevation={3} className={classes.paper}>
-						<Box className={classes.boxMessages}>
-							<Scrollbars style={{ width: '100%', height: '100%' }}>
-								{messages.map(message => (
-									<Box display="flex" justifyContent={message.author === 1 ? "flex-start" : "flex-end"}>
-										<Paper className={classes.messageText}>
-											<p>{message.text}</p>
-										</Paper>
-									</Box>
-								))}
-							</Scrollbars>
-						</Box>
-						<Box width="97%" mx="auto" className={classes.boxInput}>
-							<CustomizedInputBase className={classes.InputBase} />
-						</Box>						
-					</Paper>				
-				</Grid>			
+		<Grid container spacing={2}>
+			<Grid item xs={9} alignItems="center">
+				<Paper elevation={3} className={classes.paper}>
+					<Box className={classes.boxMessages}>
+						<Scrollbars style={{ width: '100%', height: '100%' }}>
+							{messages.map(message => (
+								<Box display="flex" justifyContent={message.author === 1 ? "flex-start" : "flex-end"}>
+									<Paper className={classes.messageText}>
+										<p>{message.text}</p>
+									</Paper>
+								</Box>
+							))}
+						</Scrollbars>
+					</Box>
+					<Box width="97%" mx="auto" className={classes.boxInput}>
+						<CustomizedInputBase saveMessage={saveMessage} className={classes.InputBase} />
+					</Box>
+				</Paper>
 			</Grid>
-		
+		</Grid>
 	);
 }
 
